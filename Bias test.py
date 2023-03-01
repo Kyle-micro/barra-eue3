@@ -1,4 +1,3 @@
-# 重跑Cm要設Sample, o
 
 import pandas as pd
 import numpy as np
