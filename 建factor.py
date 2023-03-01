@@ -32,9 +32,7 @@ len(data1['name'].unique())
 #Size
 data1['size'] = np.log(data1['Market Cap'])
 
-#data1['volume'] = np.log(data1['Volume'])
-
-#vol2-DSTD
+#vol-DSTD
 def halflife(a,b):
     lambd=(0.5**(1/a))
     lambdalist=[]
@@ -68,7 +66,7 @@ for s in data1['name'].unique():
     print(a)
 data1['volatility'] = vol['volatility']
 
-#Liq
+#Liq-Amihud illiquidity
 data1['liquidity'] = np.log(1+ abs(data1['return'])/data1['Volume'])*(-1)
 #data1['liq'] = abs(data1['return'])/data1['Volume']
 
@@ -128,7 +126,7 @@ factor.to_csv('dacs_factor.csv')
 #相關係數測一下
 factor.iloc[:,5:].corr()
 
-#===========================因子去極值 + 標準化 + 壓縮========================================================
+#===========================因子標準化 + 壓縮========================================================
 f = pd.read_csv('dacs_factor.csv').drop('Unnamed: 0', axis=1)
 
 #分佈圖
